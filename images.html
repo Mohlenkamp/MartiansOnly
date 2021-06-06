@@ -3,42 +3,55 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Travel to Mars | Welcome</title>
+    <title>Mars Images Page </title>
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
   </head>
-<<<<<<< HEAD
-=======
-  <body>
->>>>>>> develop
 
-    <div class="off-canvas-wrapper">
-      <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+<body>
 
-        <div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas data-position="left">
-          <div class="row column">
-            <br>
-            <iframe width="240px" height="870" scrolling="yes" frameborder="0" src="http://cab.inta-csic.es/rems/wp-content/plugins/marsweather-widget/widget.php?lang=en"></iframe>
-          </div>
-        </div>
+  <!--Navigation Bar-->
+  <div class="title-bar" data-responsive-toggle="realEstateMenu">
+    <div class="title-bar-inner-container">
+      <ul class="menu" data-responsive-menu="accordion" id="navigation-bar">
+        <li class="menu-text">MarsX</li>
+        <li><a href="./index.html">Flights</a></li>
+        <li><a href="./aboutUs.html">Learn More</a></li>
+        <li><a href="./images.html">Image Gallery</a></li>
+        <li><a href="./index.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
 
-        <div class="off-canvas-content" data-off-canvas-content>
-          <div class="title-bar hide-for-large">
-            <div class="title-bar-left">
-              <button class="menu-icon" type="button" data-open="mars-weather"></button>
-              <span class="title-bar-title">Mars Images</span>
-            </div>
-          </div>
-          <div class="callout primary">
-            <div class="row column">
+  
+        
+  <div class="title-bar hide-for-large">
+    <div class="title-bar-left">
+     </div>
+   </div>
+  <main class="grid-contianer">
+
+     <!--Hero Section -->
+     <header class="hero-section">
+        <div class="hero-section-text">
               <h1>Congratulations on your upcoming trip to MARS!</h1>
-              <p class="lead">To familiarize yourself with the weather and landing locations, please take advantage of our weather and imaging services.</p>
-            </div>
+              <p.>We would appreciate if you familiarize yourself with the weather and landing locations, through our
+                our weather and imaging services below.</p>
           </div>
-          <div class="grid-x grid-padding-x">
+        </header>
+  
+
+
+          
+      <!--Rover Selector-->
+    <div class="grid-x grid-padding-x">
+      <div class="roverselector">
             <div class="large-6 medium-6 cell">
               <label>Choose Rover</label>
-              <input type="radio" name="rover" value="Curiosity" id="roverCuriosity"><label for="roverCuriosity">Curiosity</label>
-              <input type="radio" name="rover" value="Perseverance" id="roverPerseverance"><label for="roverPerseverance">Perseverance</label>
+              <input type="radio" name="rover" value="Curiosity" id="roverCuriosity"><label
+                for="roverCuriosity">Curiosity</label>
+              <input type="radio" name="rover" value="Perseverance" id="roverPerseverance"><label
+                for="roverPerseverance">Perseverance</label>
             </div>
             <div class="large-4 medium-4 cell">
               <label>SOL date:</label>
@@ -48,119 +61,119 @@
               <label>Select Camera</label>
               <select id="selectCamera">
               </select>
-              <a href="#" id="fetchRoverImages" class="success button">Get Images</a><br/>
+              <a href="#" id="fetchRoverImages" i class="fa fa-search">Get Images</a>
+              <p>You can retrieve up to 12 images from the rover database. Please understand that not every sol and/or
+                camera has an image to display based on weather and location limitations</p>
+            </div>
+            <div class="marsimages">
+            <div class="row small-up-2 medium-up-3 large-up-4">
+              <div class="column">
+                <img class="thumbnail" id="image1" src="">
+                <h5 id="image1Caption"></h5>
+              </div>
+              <div class="column">
+                <img class="thumbnail" id="image2" src="">
+                <h5 id="image2Caption"></h5>
+              </div>
+              <div class="column">
+                <img class="thumbnail" id="image3" src="">
+                <h5 id="image3Caption"></h5>
+              </div>
+              <div class="column">
+                <img class="thumbnail" id="image4" src="">
+                <h5 id="image4Caption"></h5>
+              </div>
+              <div class="column">
+                <img class="thumbnail" id="image5" src="">
+                <h5 id="image5Caption"></h5>
+              </div>
+              <div class="column">
+                <img class="thumbnail" id="image6" src="">
+                <h5 id="image6Caption"></h5>
+              </div>
+              <div class="column">
+                <img class="thumbnail" id="image7" src="">
+                <h5 id="image7Caption"></h5>
+              </div>
+              <div class="column">
+                <img class="thumbnail" id="image8" src="">
+                <h5 id="image8Caption"></h5>
+              </div>
+              <div class="column">
+                <img class="thumbnail" id="image9" src="">
+                <h5 id="image9Caption"></h5>
+              </div>
+              <div class="column">
+                <img class="thumbnail" id="image10" src="">
+                <h5 id="image10Caption"></h5>
+              </div>
+              <div class="column">
+                <img class="thumbnail" id="image11" src="">
+                <h5 id="image11Caption"></h5>
+              </div>
+              <div class="column">
+                <img class="thumbnail" id="image12" src="">
+                <h5 id="image12Caption"></h5>
+              </div>
             </div>
           </div>
-          <div class="row small-up-2 medium-up-3 large-up-4">
-            <div class="column">
-              <img class="thumbnail" id="image1" src="">
-<<<<<<< HEAD
-              <h5 id="image1Caption"></h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image2" src="">
-              <h5 id="image2Caption"></h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image3" src="">
-              <h5 id="image3Caption"></h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image4" src="">
-              <h5 id="image4Caption"></h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image5" src="">
-              <h5 id="image5Caption"></h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image6" src="">
-              <h5 id="image6Caption"></h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image7" src="">
-              <h5 id="image7Caption"></h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image8" src="">
-              <h5 id="image8Caption"></h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image9" src="">
-              <h5 id="image9Caption"></h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image10" src="">
-              <h5 id="image10Caption"></h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image11" src="">
-              <h5 id="image11Caption"></h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image12" src="">
-              <h5 id="image12Caption"></h5>
-            </div>
-          </div>
+         </div>
+        </div>
           <hr>
-          <div class="">
-            <a href="https://mars.nasa.gov/layout/embed/image/m20weather/" class="button hollow expanded">Get the latest weather forecast! Courtesy NASA/JPL/Cal-Tech/CAB</a>
+          <div class="marsimages">
+            <a href="https://mars.nasa.gov/layout/embed/image/m20weather/" class="button hollow expanded">Get the latest
+              weather forecast! Courtesy NASA/JPL/Cal-Tech/CAB</a>
           </div>
-=======
-              <h5 id="image1Caption">Image 1</h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image2" src="">
-              <h5 id="image2Caption">Image 2</h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image3" src="">
-              <h5 id="image3Caption">Image 3</h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image4" src="">
-              <h5 id="image4Caption">Image 4</h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image5" src="">
-              <h5 id="image5Caption">Image 5</h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image6" src="">
-              <h5 id="image6Caption">Image 6</h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image7" src="">
-              <h5 id="image7Caption">Image 7</h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image8" src="">
-              <h5 id="image8Caption">Image 8</h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image9" src="">
-              <h5 id="image9Caption">Image 9</h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image10" src="">
-              <h5 id="image10Caption">Image 10</h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image11" src="">
-              <h5 id="image11Caption">Image 11</h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" id="image12" src="">
-              <h5 id="image12Caption">Image 12</h5>
+          <p>Search results from the NASA image and video library.
+            The hyperlink will provide you with a list of additional links to various images and videos to choose from.
+            Use the Back button in your browser to return to this page.</p>
+          <div id="nasaImages-wrapper">
+            <div class="row small-up-2 medium-up-3 large-up-4">
+              <div class="column">
+                <a href="" class="" id="library1"></a>
+              </div>
+              <div class="column">
+                <a href="" class="" id="library2"></a>
+              </div>
+              <div class="column">
+                <a href="" class="" id="library3"></a>
+              </div>
+              <div class="column">
+                <a href="" class="" id="library4"></a>
+              </div>
+              <div class="column">
+                <a href="" class="" id="library5"></a>
+              </div>
+              <div class="column">
+                <a href="" class="" id="library6"></a>
+              </div>
+              <div class="column">
+                <a href="" class="" id="library7"></a>
+              </div>
+              <div class="column">
+                <a href="" class="" id="library8"></a>
+              </div>
+              <div class="column">
+                <a href="" class="" id="library9"></a>
+              </div>
+              <div class="column">
+                <a href="" class="" id="library10"></a>
+              </div>
+              <div class="column">
+                <a href="" class="" id="library11"></a>
+              </div>
+              <div class="column">
+                <a href="" class="" id="library12"></a>
+              </div>
             </div>
           </div>
-
-          <hr>
->>>>>>> develop
         </div>
       </div>
     </div>
 
+
+
+    <!-- Script Files -->
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
     <script src="./assets/js/search-page.js"></script>
@@ -168,7 +181,5 @@
       $(document).foundation();
     </script>
   </body>
+</main>
 </html>
-
-
-

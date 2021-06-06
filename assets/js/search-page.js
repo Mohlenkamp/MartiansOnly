@@ -4,7 +4,7 @@
 
 // Globals
 let roverSelected = ""
-let solSelected = -1
+let solSelected = 0
 let cameraSelected = ""
 let earthDateSelected = ""
 
@@ -15,6 +15,10 @@ const nasaImagesURL = "https://images-api.nasa.gov"
 
 // From https://github.com/chrisccerami/mars-photo-api
 const nasaRoverPhotos = "https://mars-photos.herokuapp.com/"  //This is the one that doesn't require an API key
+const nasaImageLibrary = "https://images-api.nasa.gov/search"       //This is the main NASA images repository
+const nasaImageCORS = "http://nasaimages.herokuapp.com"
+
+
 let curiosityCameras = {"fhaz":"front hazard avoidance camera",
                         "rhaz":"rear hazard avoidance camera",
                         "mast":"mast camera",
@@ -71,6 +75,18 @@ const selectOptions = document.getElementById("selectCamera")
 
 // Functions
 
+ function testSolDate(solDate, min, max){
+  //This function will make sure the sol entered is a number and between a reasonable range
+  //for the rover in question or it will change it to zero so the fetch doesn't fail
+
+    if ((typeof solDate === 'number') && (solDate >= min) && (solDate<=max)){
+      return solDate
+    }
+    else{
+      return 0
+    }
+}
+
 const storeData = function storeToLocal(){
     // This function will store any needed search data to the local storage
 
@@ -97,6 +113,27 @@ const pDataResults = function passDataResults(){
 
     // May call storeData function as well... 
 
+}
+
+
+
+// Using different fetch commands for NASA image library because it has to be encoded
+async function getLibraryData(url = '', data = {}) {
+  // ran into problems with the url request, so I'm concat-ing the search param un-encoded
+  // issue with Nasa site changes since the API documentation...
+  console.log("Fetch 2: " + url)
+  const response = await fetch(url, {
+    method: 'GET', 
+    mode: 'cors', 
+    cache: 'no-cache', 
+    credentials: 'same-origin', 
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    redirect: 'follow', 
+    referrerPolicy: 'no-referrer'
+  });
+  return response.json(); 
 }
 
 function selectCuriosity(){
@@ -126,17 +163,25 @@ function fetchRoverImages(){
   //debugger
   let qry1 = ""
   let qry2 = ""
+  let qry1b = ""
+  let qry2b = ""
   let apiUrl = nasaRoverPhotos + "api/v1/rovers/" + roverSelected + "/photos?"
+  let api2Url = nasaImageLibrary
   solSelected = document.querySelector("#solDate").value
   let imgLocation = ""
   let imgElement = ""
+  let randomPull = ""  //Using this to pull randomly from the resultant array
+
   if (solSelected.length>0){
     //User input a sol value
+    solDate = testSolDate(solDate,0,3400) //make sure it's a number within the max range
     qry1 = "sol=" + solSelected.toString()
+    //qry1b = encodeURIComponent("Perseverance")
   }
   if (selectCamera.value){
     //User selected camera
     qry2 = "camera=" + selectCamera.value
+    qry2b = ""
   }
   if ((earthDateSelected)&& (solSelected < 0)){
     // future feature
@@ -144,13 +189,15 @@ function fetchRoverImages(){
   }
   if (qry1.length>0){
     apiUrl = apiUrl + qry1 + "&" + qry2
+    //api2Url = api2Url + qry1b
   }
   else{
     apiUrl = apiUrl + qry2
+    //apr2Url = api2Url + qry2b
   }
 
   console.log(apiUrl)
-  console.log("https://mars-photos.herokuapp.com/api/v1/rovers/Perseverance/photos?sol=98")
+  //console.log("https://mars-photos.herokuapp.com/api/v1/rovers/Perseverance/photos?sol=98") // test data
 
   fetch(apiUrl).then(function(response) {
     // request was successful
@@ -163,9 +210,12 @@ function fetchRoverImages(){
           imgLocation = "#image" + i.toString()
           imgElement = document.querySelector(imgLocation)
           if (data.photos[i-1]){
-            imgElement.src = data.photos[i-1].img_src
+            randomPull = data.photos[parseInt(Math.floor(Math.random()*data.photos.length))]
+            imgElement.src = randomPull.img_src
+            //imgElement.src = data.photos[i-1].img_src -- Doing random pull instead now
             imgElement.style.visibility = "visible"
-            document.querySelector(imgLocation + "Caption").textContent = data.photos[i-1].earth_date
+            document.querySelector(imgLocation + "Caption").textContent = randomPull.earth_date
+            //document.querySelector(imgLocation + "Caption").textContent = data.photos[i-1].earth_date
           }
           else if (i===1) {
             // No images for this search
@@ -180,39 +230,71 @@ function fetchRoverImages(){
       });
     }
     else {
-      console.log("Error with request!");
+      console.log("Error with request 1!");
     }
   });
- 
+  console.log("Starting fetch 2")
+
+const otherParams = "?q=" + roverSelected
+const otherParamsEncoded = encodeURIComponent(otherParams)
+
+getLibraryData(api2Url + otherParams,{otherParamsEncoded})
+  .then(data => {
+    console.log(data); //already parsed from function call
+    for (i=1;i<13;i++){
+      imgLocation = "#library" + i.toString()
+          imgElement = document.querySelector(imgLocation)
+          if (data.collection.items[i-1]){
+            //Have to do another fetch from the href returned if we want to show the image/video 
+            //versus just a link to the array. Deciding not to because of UI changes and lack of time.
+            randomPull = data.collection.items[parseInt(Math.floor(Math.random()*data.collection.items.length))]
+            imgElement.href = randomPull.href
+            //imgElement.href = data.collection.items[i-1].href
+            imgElement.style.visibility = "visible"
+            imgElement.textContent = randomPull.data[0].title
+            //imgElement.textContent = data.collection.items[i-1].data[0].title
+          }
+          else if (i===1) {
+            // No images for this search
+            imgElement.src = ""
+            document.querySelector("#library1Caption").textContent = "No results returned"
+          }
+          else{
+            imgElement.style.visibility = "hidden"
+            document.querySelector(imgLocation + "Caption").textContent = ""
+          }
+    }
+  });
 }
 
-
-
-//This async function will get specific images off the NASA images api
-const getImage = async function nasaImagesAPI() {
-    try {
-      let response = await fetch('image.jpg');
+// //This async function will get specific images off the NASA images api
+// const getImage = async function nasaImagesAPI() {
+//     try {
+//       let response = await fetch('image.jpg');
   
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      //TODO: stuff in here
+//       if (!response.ok) {
+//         throw new Error(`HTTP error! status: ${response.status}`);
+//       }
+//       //TODO: stuff in here
   
-    } catch(e) {
-      console.log(e);
-    }
-  }
+//     } catch(e) {
+//       console.log(e);
+//     }
+//   }  ** Deprecated --- new function getLibrary used instead
 
 
 
 // Event Listeners
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log('Search page loaded');
+    //set default rover on load in case user just hits the get images button before selecting
+    $("#roverPerseverance").click();
 });
 
 // create event listener on search button to call flightFetch
 $("#search-btn").click(function() {
     location = $("#location").val();
+    //Waiting for specs to pass data
     flightFetch(location);
   });
 
@@ -226,6 +308,7 @@ $("#roverCuriosity").click(function() {
   // User chose Curiosity
   console.log("chose Curiosity")
   roverSelected = "curiosity"
+  $('#solDate').attr('placeholder','Between 0 and 3400') //Curiosity has only been on Mars for 3140 sols
   selectCuriosity()
 })
 
@@ -233,6 +316,7 @@ $("#roverPerseverance").click(function() {
   // User chose Perseverance
   console.log("chose Perseverance")
   roverSelected = "Perseverance" 
+  $('#solDate').attr('placeholder','Between 0 and 200') //Perseverance has only been on Mars 100 sols so far
   selectPerseverance()
 })
 

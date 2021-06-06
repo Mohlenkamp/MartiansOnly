@@ -4,74 +4,126 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title> Martians Only </title>
+    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico"/>
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css">
   </head>
   
   <body >
     <!--Navigation Bar-->
-    <div class="title-bar" data-responsive-toggle="realEstateMenu" data-hide-for="small">
-      <div class="top-bar-left">
+    <div class="title-bar" data-responsive-toggle="realEstateMenu">
+      <div class="title-bar-inner-container">
         <ul class="menu" data-responsive-menu="accordion" id="navigation-bar">
           <li class="menu-text">MarsX</li>
-          <li><a href="#">Book Flight</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Image Gallery</a></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Flights</a></li>
+          <li><a href="./aboutUs.html">Learn More</a></li>
+          <li><a href="./images.html">Image Gallery</a></li>
+          <li><a href="#contactus">Contact Us</a></li>
         </ul>
       </div>
     </div>
 
-    <!--Mars Hero-->
-      <div class="hero-section" id="hero">
-        <div class="hero-section-text">
-          <h1> Vacation on Mars</h1>
-          <h4><small> We are excited to offically announce the opportunity for individuals to
-               book there tickets to finally leave this planet. </small>
-          </h4>
-        </div>
-      </div>  
-
-  <section class="main">
-  
-    <!--Search Form-->
-    <form class="form-group">
-          <div class="medium-6 cell">
-            <label class="medium-6 cell">Departing From:
-              <select id="departure-option" placeholder="Departing From:">
-                <option value = "USA" id="USA" >United States</option>
-                <option value = "China" id="China">China</option>
-                <option value = "Russia" id="Russia">Russia</option>
+    <main class="grid-container">
+      
+          <!--Mars Hero-->
+            <header class="hero-section" id="hero">
+              <div class="hero-section-text">
+                <h1> Vacation on Mars</h1>
+                <h4><small> We are excited to offically announce the opportunity for individuals to
+                     book there tickets to finally leave this planet. </small>
+                </h4>
+              </div>
+            </header>
+      
+            
+          <!--Search Form-->
+            <div class="hero-search-filter-content">
+              <img class="hero-search-filter-logo" src="https://placehold.it/160x80" alt="" />
+              <form class="hero-search-filter-form" action="">
+                <label for="Departure">Departing: </label>
+                <select id="depart" class="hero-search-filter-form-find" type="dropdown">
+                  <option value = ""></option>
+                  <option value = "USA" id="USA" >United States</option>
+                  <option value = "China" id="China">China</option>
+                  <option value = "Russia" id="Russia">Russia</option>
                 </select>
-             </label>
-              <label class="medium-6 cell">Arriving To:
-                <select type="dropdown" id="destination" >
-                    <option value = "Soujourn">Soujorn</option>
-                    <option value = "Curiousity">Curiosity</option>
-                    <option value = "Spirit">Spirit</option>
-                    <option value = "Perseverance">Perseverance</option>
-                    </select>
-              </label>
-            <!--Departure Date-->
-          <label class="medium-6 cell">Departure Date:
-            <input type="date" placeholder="">
-          </label>
+                <div class="divider">&nbsp;</div>
+                <label for="arrival">Arriving: </label>
+                <select id="arrival" class="hero-search-filter-form-near" type="dropdown">
+                  <option value=""></option>
+                  <option value = "Soujourn">Soujorn</option>
+                  <option value = "Curiousity">Curiosity</option>
+                  <option value = "Spirit">Spirit</option>
+                  <option value = "Perseverance">Perseverance</option>
+                  </select>
+                <div class="divider">&nbsp;</div>
+                <label for="departure-date"> </label>
+                <input type="date" id="departure-date">
+                <button class="button" id="search-flight"><i class="fa fa-search">Search</i></button>
+              </form>
+            </div>
+        
+        <div class="blockquote">
+        <blockquote>
+         Space exploration is a force of nature unto itself that no other force in society can rival. 
+         <cite>Neil deGrasse Tyson</cite>
         </div>
-        <!--button-->
-        <div class="input-group-button">
-          <input type="submit" class="button" id="search-flight" value="search-flights">
+
+
+    </main>
+
+      <!--Footer-->
+      <footer class="marketing-site-footer">
+        <div class="row medium-unstack">
+          <div class="medium-4 columns">
+            <h4 class="marketing-site-footer-name">Disclaimer</h4>
+            <p>We are not responsible for any loss of life due to limited oxygen supply, excessive heat waves,  and/or extraterrestrial parasitic infections.
+              <br><br> 
+              Fly at your own risk. Thank you for booking with us. We hope you enjoy your trip.  </p>
+            <ul class="menu marketing-site-footer-menu-social simple">
+              <li><a href="#"><i class="fa fa-youtube-square" aria-hidden="true"></i></a></li>
+               <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+               <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+          <div class="medium-4 columns">
+             <h4 class="marketing-site-footer-title">Contact Info</h4>
+            <div class="marketing-site-footer-block">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <p>555 Moon Walk Rd<br>Utah 84734</p>
+            </div>
+            <div class="marketing-site-footer-block">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <p>1 (800) 555-5555</p>
+            </div>
+            <div class="marketing-site-footer-block">
+              <i class="fa fa-envelope-o" aria-hidden="true"></i>
+              <p>hello@maritansonly.com</p>
+            </div>
+          </div>
+          <div class="medium-4 columns">
+            <h4 class="marketing-site-footer-title">Find us at:</h4>
+            <div class="row small-up-3">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13629804.046140995!2d-173.31260660792222!3d39.11110478016494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8749eb45907b4171%3A0x7800f462a6a4ca73!2sThe%20Mars%20Desert%20Research%20Station%20-%20MDRS!5e0!3m2!1sen!2sus!4v1622852886354!5m2!1sen!2sus" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+          </div>
         </div>
-      </form>
-    </div>
-  </div>
+        <div class="marketing-site-footer-bottom">
+          <div class="row large-unstack align-middle">
+            <div class="column">
+              <p>&copy; 2021 No rights reserved</p>
+            </div>
+            <div class="column">
+              <ul class="menu" data-responsive-toggle="realEstateMenu" data-hide-for="small">
+                <li class="menu-text">MarsX</li>
+                <li><a href="#">Learn More</a></li>
+                <li><a href="#">Image Gallery</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
 
-
-
-
-    
-    </section>
-    <!--Quote-->
-    <blockquote>
-      Space exploration is a force of nature unto itself that no other force in society can rival. 
-      <cite>Neil deGrasse Tyson</cite>
-</body>
+      <script src="./assets/js/script.js"></script>
+    </body>
