@@ -56,7 +56,7 @@
               <label for="DOB">Date of Birth</label>
               <input type="date" id="DOB" name="DOB" placeholder="Date of Birth">
             </div>
-            <input id="book-flight" class="button expanded" type="submit" value="Book Flight">
+            <input id="book-flight" class="button expanded" type="submit" max="dtToday" value="Book Flight">
           </form>
         </div>
       <!--Ticket -->
@@ -80,5 +80,8 @@
       </div>
       </div>
     </div>
-      <script src="./assets/js/displayPage.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/displayPage.js"></script>
   </body>
